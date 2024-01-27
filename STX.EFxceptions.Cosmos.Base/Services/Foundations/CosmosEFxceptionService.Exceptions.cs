@@ -30,6 +30,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new DependencyFailedCosmosException(message);
                 case 429:
                     throw new TooManyRequestsCosmosException(message);
+                case 500:
+                    throw new InternalServerCosmosException(message);
             }
         }
     }

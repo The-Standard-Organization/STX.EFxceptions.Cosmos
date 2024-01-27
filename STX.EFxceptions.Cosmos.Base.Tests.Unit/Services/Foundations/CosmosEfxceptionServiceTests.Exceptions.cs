@@ -175,7 +175,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         public void ShouldThrowInternalServerCosmosException()
         {
             // given
-            HttpStatusCode cosmosStatusCode = (HttpStatusCode)449;
+            HttpStatusCode cosmosStatusCode = HttpStatusCode.InternalServerError;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
             this.cosmosErrorBrokerMock.Setup(broker =>
