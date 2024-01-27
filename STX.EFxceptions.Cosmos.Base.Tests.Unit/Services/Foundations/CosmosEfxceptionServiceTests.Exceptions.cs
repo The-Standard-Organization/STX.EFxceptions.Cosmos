@@ -58,5 +58,21 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<AuthorizationFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
+
+        [Fact]
+        public void ShouldThrowResourceNotFoundException()
+        {
+            // given
+            HttpStatusCode cosmosStatusCode = HttpStatusCode.NotFound;
+            CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
+
+            this.cosmosErrorBrokerMock.Setup(broker =>
+                broker.GetErrorCode(cosmosException))
+                    .Returns((int)cosmosStatusCode);
+
+            // when . then
+            Assert.Throws<ResourceNotFoundException>(() =>
+                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+        }
     }
 }
