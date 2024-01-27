@@ -6,7 +6,7 @@ using Microsoft.Azure.Cosmos;
 using System.Net;
 using Xunit;
 
-namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundatins
+namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
 {
     public partial class CosmosEfxceptionServiceTests
     {

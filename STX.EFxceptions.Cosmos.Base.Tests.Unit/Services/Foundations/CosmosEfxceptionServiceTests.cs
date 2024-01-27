@@ -10,7 +10,7 @@ using STX.EFxceptions.Cosmos.Base.Services.Foundations;
 using System.Drawing.Printing;
 using Tynamix.ObjectFiller;
 
-namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundatins
+namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
 {
     public partial class CosmosEfxceptionServiceTests
     {
