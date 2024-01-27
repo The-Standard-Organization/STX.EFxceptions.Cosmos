@@ -4,14 +4,15 @@
 
 using Microsoft.Azure.Cosmos;
 using STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker;
+using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
 
 namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
 {
     public partial class CosmosEFxceptionService : ICosmosEFxceptionService
     {
-        private readonly ICosmosErrorBroker cosmosErrorBroker;
+        private readonly IDbErrorBroker<CosmosException> cosmosErrorBroker;
 
-        public CosmosEFxceptionService(ICosmosErrorBroker cosmosErrorBroker) =>
+        public CosmosEFxceptionService(IDbErrorBroker<CosmosException> cosmosErrorBroker) =>
             this.cosmosErrorBroker = cosmosErrorBroker;
 
         public void ThrowMeaningfulException(CosmosException cosmosException)
