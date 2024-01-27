@@ -74,7 +74,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<ResourceNotFoundCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
-        
+
         [Fact]
         public void ShouldThrowRequestTimeoutCosmosException()
         {
@@ -90,7 +90,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<RequestTimeoutCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
-        
+
         [Fact]
         public void ShouldThrowPreconditionFailedCosmosException()
         {
@@ -106,7 +106,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<PreconditionFailedCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
-        
+
         [Fact]
         public void ShouldThrowPayloadTooLargeCosmosException()
         {
@@ -122,7 +122,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<PayloadTooLargeCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
-        
+
         [Fact]
         public void ShouldThrowResourceLockedCosmosException()
         {
@@ -138,7 +138,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<ResourceLockedCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
-        
+
         [Fact]
         public void ShouldThrowDependencyFailedCosmosException()
         {
@@ -152,6 +152,22 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
 
             // when . then
             Assert.Throws<DependencyFailedCosmosException>(() =>
+                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+        }
+
+        [Fact]
+        public void ShouldThrowTooManyRequestsCosmosException()
+        {
+            // given
+            HttpStatusCode cosmosStatusCode = HttpStatusCode.TooManyRequests;
+            CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
+
+            this.cosmosErrorBrokerMock.Setup(broker =>
+                broker.GetErrorCode(cosmosException))
+                    .Returns((int)cosmosStatusCode);
+
+            // when . then
+            Assert.Throws<TooManyRequestsCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
     }
