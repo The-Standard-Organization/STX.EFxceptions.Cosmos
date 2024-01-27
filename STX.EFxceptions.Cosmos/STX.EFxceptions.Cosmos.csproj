@@ -52,5 +52,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\STX.EFxceptions.Cosmos.Base\STX.EFxceptions.Cosmos.Base.csproj" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="STX.EFxceptions.Cosmos.Tests.Unit" />
+	</ItemGroup>
 
 </Project>

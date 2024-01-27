@@ -2,6 +2,7 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Cosmos;
 using STX.EFxceptions.Core;
 using STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker;
@@ -13,10 +14,13 @@ namespace STX.EFxceptions.Cosmos
 {
     public class EFxceptionsContext : DbContextBase<CosmosException>
     {
-        protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
-            new CosmosErrorBroker();
-
         protected override IEFxceptionService<CosmosException> CreateEFxceptionService(
-            IDbErrorBroker<CosmosException> errorBroker) => new CosmosEFxceptionService(errorBroker);
+            IDbErrorBroker<CosmosException> errorBroker)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
+           throw new NotImplementedException();
     }
 }
