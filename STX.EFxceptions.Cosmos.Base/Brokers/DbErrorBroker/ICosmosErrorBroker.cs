@@ -5,7 +5,7 @@
 using Microsoft.Azure.Cosmos;
 using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
 
-namespace STX.EFxceptions.Cosmos.Brokers.DbErrorBroker
+namespace STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker
 {
     public interface ICosmosErrorBroker : IDbErrorBroker<CosmosException>
     { }

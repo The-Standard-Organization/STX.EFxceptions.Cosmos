@@ -4,7 +4,7 @@
 
 using Microsoft.Azure.Cosmos;
 
-namespace STX.EFxceptions.Cosmos.Brokers.DbErrorBroker
+namespace STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker
 {
     public class CosmosErrorBroker : ICosmosErrorBroker
     {
