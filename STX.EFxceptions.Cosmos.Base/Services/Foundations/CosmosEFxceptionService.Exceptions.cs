@@ -28,6 +28,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new ResourceLockedCosmosException(message);
                 case 424:
                     throw new DependencyFailedCosmosException(message);
+                case 429:
+                    throw new TooManyRequestsCosmosException(message);
             }
         }
     }
