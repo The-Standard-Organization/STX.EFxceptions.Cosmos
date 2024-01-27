@@ -22,6 +22,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new RequestTimeoutCosmosException(message);
                 case 412:
                     throw new PreconditionFailedCosmosException(message);
+                case 413:
+                    throw new PayloadTooLargeCosmosException(message);
             }
         }
     }
