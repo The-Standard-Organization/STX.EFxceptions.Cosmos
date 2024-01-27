@@ -28,7 +28,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
 
         [Fact]
-        public void ShouldThrowAuthenticationFailedException()
+        public void ShouldThrowAuthenticationFailedCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Unauthorized;
@@ -44,7 +44,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
 
         [Fact]
-        public void ShouldThrowAuthorizationFailedException()
+        public void ShouldThrowAuthorizationFailedCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Forbidden;
@@ -60,7 +60,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
 
         [Fact]
-        public void ShouldThrowResourceNotFoundException()
+        public void ShouldThrowResourceNotFoundCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.NotFound;
@@ -76,7 +76,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
         
         [Fact]
-        public void ShouldThrowRequestTimeoutException()
+        public void ShouldThrowRequestTimeoutCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.RequestTimeout;
@@ -92,7 +92,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
         
         [Fact]
-        public void ShouldThrowPreconditionFailedException()
+        public void ShouldThrowPreconditionFailedCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.PreconditionFailed;
@@ -108,7 +108,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
         
         [Fact]
-        public void ShouldThrowPayloadTooLargeException()
+        public void ShouldThrowPayloadTooLargeCosmosException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.RequestEntityTooLarge;
