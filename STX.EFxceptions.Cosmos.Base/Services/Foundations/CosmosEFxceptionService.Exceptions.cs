@@ -26,6 +26,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new PayloadTooLargeCosmosException(message);
                 case 423:
                     throw new ResourceLockedCosmosException(message);
+                case 424:
+                    throw new DependencyFailedCosmosException(message);
             }
         }
     }
