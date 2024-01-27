@@ -32,6 +32,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new TooManyRequestsCosmosException(message);
                 case 500:
                     throw new InternalServerCosmosException(message);
+                case 503:
+                    throw new ServiceUnavailableCosmosException(message);
             }
         }
     }
