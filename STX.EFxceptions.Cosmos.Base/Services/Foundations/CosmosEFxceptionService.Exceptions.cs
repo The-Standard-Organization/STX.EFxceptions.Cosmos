@@ -16,6 +16,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new AuthenticationFailedException(message);
                 case 403:
                     throw new AuthorizationFailedException(message);
+                case 404:
+                    throw new ResourceNotFoundException(message);
             }
         }
     }
