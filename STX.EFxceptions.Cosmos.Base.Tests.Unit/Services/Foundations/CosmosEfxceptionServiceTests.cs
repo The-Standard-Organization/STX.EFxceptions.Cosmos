@@ -2,12 +2,11 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Cosmos;
 using System.Net;
+using Microsoft.Azure.Cosmos;
 using Moq;
 using STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker;
 using STX.EFxceptions.Cosmos.Base.Services.Foundations;
-using System.Drawing.Printing;
 using Tynamix.ObjectFiller;
 
 namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations

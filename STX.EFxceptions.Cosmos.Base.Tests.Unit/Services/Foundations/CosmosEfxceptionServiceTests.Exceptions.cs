@@ -2,8 +2,8 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Cosmos;
 using System.Net;
+using Microsoft.Azure.Cosmos;
 using Xunit;
 
 namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
