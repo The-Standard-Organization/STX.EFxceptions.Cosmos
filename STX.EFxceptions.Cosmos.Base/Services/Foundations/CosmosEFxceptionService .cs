@@ -14,7 +14,11 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
         public CosmosEFxceptionService(ICosmosErrorBroker cosmosErrorBroker) =>
             this.cosmosErrorBroker = cosmosErrorBroker;
 
-        public void ThrowMeaningfulException(CosmosException cosmosException) =>
+        public void ThrowMeaningfulException(CosmosException cosmosException)
+        {
+            int cosmosErrorCode = this.cosmosErrorBroker.GetErrorCode(cosmosException);
+            ConvertAndThrowMeaningfulException(cosmosErrorCode, cosmosException.Message);
             throw cosmosException;
+        }
     }
 }

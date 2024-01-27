@@ -28,7 +28,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
 
         [Fact]
-        public void ShouldThrowUnauthorizedAccessException()
+        public void ShouldThrowAuthenticationFailedException()
         {
             // given
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Unauthorized;
@@ -39,7 +39,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<UnauthorizedAccessException>(() =>
+            Assert.Throws<AuthenticationFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
     }

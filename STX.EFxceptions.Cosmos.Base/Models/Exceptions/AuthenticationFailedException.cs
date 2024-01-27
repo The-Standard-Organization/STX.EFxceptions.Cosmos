@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class UnauthorizedAccessException : Exception
+    public class AuthenticationFailedException : Exception
     {
-        public UnauthorizedAccessException(string message) : base(message) { }
+        public AuthenticationFailedException(string message) : base(message) { }
     }
 }
