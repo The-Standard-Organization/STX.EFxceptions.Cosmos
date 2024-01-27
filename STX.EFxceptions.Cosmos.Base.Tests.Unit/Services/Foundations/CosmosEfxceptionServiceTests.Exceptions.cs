@@ -186,5 +186,21 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             Assert.Throws<InternalServerCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
+        
+        [Fact]
+        public void ShouldThrowServiceUnavailableCosmosException()
+        {
+            // given
+            HttpStatusCode cosmosStatusCode = HttpStatusCode.ServiceUnavailable;
+            CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
+
+            this.cosmosErrorBrokerMock.Setup(broker =>
+                broker.GetErrorCode(cosmosException))
+                    .Returns((int)cosmosStatusCode);
+
+            // when . then
+            Assert.Throws<ServiceUnavailableCosmosException>(() =>
+                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+        }
     }
 }
