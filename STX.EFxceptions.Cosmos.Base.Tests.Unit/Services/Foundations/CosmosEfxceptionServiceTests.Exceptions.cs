@@ -39,7 +39,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<AuthenticationFailedException>(() =>
+            Assert.Throws<AuthenticationFailedCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
 
@@ -55,7 +55,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<AuthorizationFailedException>(() =>
+            Assert.Throws<AuthorizationFailedCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
 
@@ -71,7 +71,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<ResourceNotFoundException>(() =>
+            Assert.Throws<ResourceNotFoundCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
         
@@ -87,7 +87,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<RequestTimeoutException>(() =>
+            Assert.Throws<RequestTimeoutCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
         
@@ -103,7 +103,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<PreconditionFailedException>(() =>
+            Assert.Throws<PreconditionFailedCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
         
@@ -119,7 +119,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<PayloadTooLargeException>(() =>
+            Assert.Throws<PayloadTooLargeCosmosException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
         }
     }

@@ -13,15 +13,15 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
             switch (cosmosErrorCode)
             {
                 case 401:
-                    throw new AuthenticationFailedException(message);
+                    throw new AuthenticationFailedCosmosException(message);
                 case 403:
-                    throw new AuthorizationFailedException(message);
+                    throw new AuthorizationFailedCosmosException(message);
                 case 404:
-                    throw new ResourceNotFoundException(message);
+                    throw new ResourceNotFoundCosmosException(message);
                 case 408:
-                    throw new RequestTimeoutException(message);
+                    throw new RequestTimeoutCosmosException(message);
                 case 412:
-                    throw new PreconditionFailedException(message);
+                    throw new PreconditionFailedCosmosException(message);
             }
         }
     }

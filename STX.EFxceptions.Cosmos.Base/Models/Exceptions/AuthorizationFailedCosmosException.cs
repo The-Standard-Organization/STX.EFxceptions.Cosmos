@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class RequestTimeoutException : Exception
+    public class AuthorizationFailedCosmosException : Exception
     {
-        public RequestTimeoutException(string message) : base(message) { }
+        public AuthorizationFailedCosmosException(string message) : base(message) { }
     }
 }

@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class PreconditionFailedException : Exception
+    public class AuthenticationFailedCosmosException : Exception
     {
-        public PreconditionFailedException(string message) : base(message) { }
+        public AuthenticationFailedCosmosException(string message) : base(message) { }
     }
 }

@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class PayloadTooLargeException : Exception
+    public class ResourceNotFoundCosmosException : Exception
     {
-        public PayloadTooLargeException(string message) : base(message) { }
+        public ResourceNotFoundCosmosException(string message) : base(message) { }
     }
 }
