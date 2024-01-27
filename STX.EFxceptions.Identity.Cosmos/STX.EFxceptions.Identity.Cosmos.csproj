@@ -44,4 +44,14 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
+	  <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.37.1" />
+	  <PackageReference Include="STX.EFxceptions.Identity.Core" Version="0.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\STX.EFxceptions.Cosmos.Base\STX.EFxceptions.Cosmos.Base.csproj" />
+	</ItemGroup>
+
 </Project>
