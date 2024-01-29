@@ -20,6 +20,8 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
                     throw new ResourceNotFoundCosmosException(message);
                 case 408:
                     throw new RequestTimeoutCosmosException(message);
+                case 409:
+                    throw new DuplicateKeyCosmosException(message);
                 case 412:
                     throw new PreconditionFailedCosmosException(message);
                 case 413:
