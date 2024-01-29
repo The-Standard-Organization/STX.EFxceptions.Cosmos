@@ -33,6 +33,26 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
         }
 
         [Fact]
+        public void ShouldThrowDuplicateKeyCosmosException()
+        {
+            // given
+            HttpStatusCode cosmosStatusCode = HttpStatusCode.Conflict;
+            CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
+
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
+            this.cosmosErrorBrokerMock.Setup(broker =>
+                broker.GetErrorCode(cosmosException))
+                    .Returns((int)cosmosStatusCode);
+
+            // when . then
+            Assert.Throws<DuplicateKeyCosmosException>(() =>
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowAuthenticationFailedCosmosException()
         {
             // given
