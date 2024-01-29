@@ -1,4 +1,4 @@
-![RESTFulSense.Client](https://raw.githubusercontent.com/The-Standard-Organization/STX.EFxceptions.Cosmos/main/Resources/Images/stx.efCosmos_git_logo.png)
+![STX.EFxceptions.Cosmos](https://raw.githubusercontent.com/The-Standard-Organization/STX.EFxceptions.Cosmos/main/Resources/Images/stx.efCosmos_git_logo.png)
 
 [![.Net](https://github.com/The-Standard-Organization/STX.EFxceptions.Cosmos/actions/workflows/dotnet.yml/badge.svg)](https://github.com/The-Standard-Organization/STX.EFxceptions.Cosmos/actions/workflows/dotnet.yml)
 [![The Standard](https://img.shields.io/github/v/release/hassanhabib/The-Standard?filter=v2.10.0&style=default&label=Standard%20Version&color=2ea44f)](https://github.com/hassanhabib/The-Standard)
