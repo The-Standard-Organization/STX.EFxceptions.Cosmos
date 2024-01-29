@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Core;
 using STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker;
 using STX.EFxceptions.Cosmos.Base.Services.Foundations;
@@ -13,6 +14,10 @@ namespace STX.EFxceptions.Cosmos
 {
     public class EFxceptionsContext : DbContextBase<CosmosException>
     {
+        public EFxceptionsContext(DbContextOptions<EFxceptionsContext> options)
+            : base(options)
+        { }
+
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
