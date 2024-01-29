@@ -16,7 +16,7 @@ namespace STX.EFxceptions.Cosmos
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
-        protected override IEFxceptionService<CosmosException> CreateEFxceptionService(
+        protected override IEFxceptionService CreateEFxceptionService(
             IDbErrorBroker<CosmosException> errorBroker) =>
                 new CosmosEFxceptionService(errorBroker);
     }
