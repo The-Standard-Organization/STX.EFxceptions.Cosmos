@@ -18,6 +18,7 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
 
         public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
+            ValidateInnerException(dbUpdateException);
             CosmosException cosmosException = GetCosmosException(dbUpdateException.InnerException);
             int cosmosErrorCode = this.cosmosErrorBroker.GetErrorCode(cosmosException);
             ConvertAndThrowMeaningfulException(cosmosErrorCode, cosmosException.Message);
