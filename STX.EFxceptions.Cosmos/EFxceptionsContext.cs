@@ -18,6 +18,10 @@ namespace STX.EFxceptions.Cosmos
             : base(options)
         { }
 
+        protected EFxceptionsContext()
+            : base()
+        { }
+
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
