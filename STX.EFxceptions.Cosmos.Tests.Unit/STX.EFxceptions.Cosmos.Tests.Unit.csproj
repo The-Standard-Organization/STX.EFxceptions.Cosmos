@@ -21,8 +21,4 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\STX.EFxceptions.Cosmos\STX.EFxceptions.Cosmos.csproj" />
-	</ItemGroup>
-
 </Project>
