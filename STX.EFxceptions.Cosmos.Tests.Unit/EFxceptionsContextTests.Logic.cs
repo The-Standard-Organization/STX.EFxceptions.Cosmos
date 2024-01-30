@@ -28,5 +28,37 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             context.Clients.Remove(client);
             context.SaveChanges();
         }
+
+        [Fact]
+        public void ShouldThrowDuplicateKeyExceptionOnSaveChanges()
+        {
+            // given
+            Client client = new Client
+            {
+                Id = new System.Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
+            };
+
+            // when
+            context.Add(client);
+            context.SaveChanges();
+
+            Assert.Throws<DuplicateKeyCosmosException>(() =>
+            {
+                try
+                {
+                    context.Add(client);
+                    context.SaveChanges();
+                }
+                catch (ArgumentException ex)
+                {
+                    throw new DuplicateKeyCosmosException(ex.Message);
+                }
+
+            });
+
+            // then
+            context.Remove(client);
+            context.SaveChanges();
+        }
     }
 }
