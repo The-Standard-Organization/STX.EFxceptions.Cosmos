@@ -30,9 +30,11 @@ namespace STX.EFxceptions.Identity.Cosmos
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
-        protected override IEFxceptionService<CosmosException> CreateEFxceptionService(
-            IDbErrorBroker<CosmosException> errorBroker) =>
-                new CosmosEFxceptionService(errorBroker);
+        protected override IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<CosmosException> errorBroker)
+        {
+            return new CosmosEFxceptionService(errorBroker);
+        }
     }
 
     public class EFxceptionsIdentityContext<
@@ -57,8 +59,10 @@ namespace STX.EFxceptions.Identity.Cosmos
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
-        protected override IEFxceptionService<CosmosException> CreateEFxceptionService(
-            IDbErrorBroker<CosmosException> errorBroker) =>
-                new CosmosEFxceptionService(errorBroker);
+        protected override IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<CosmosException> errorBroker)
+        {
+            return new CosmosEFxceptionService(errorBroker);
+        }
     }
 }

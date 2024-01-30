@@ -4,6 +4,7 @@
 
 using System.Net;
 using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
 using Xunit;
 
@@ -18,13 +19,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Unused;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+                message: cosmosException.Message,
+                innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<CosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+            Assert.Throws<DbUpdateException>(() =>
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -34,13 +39,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Unauthorized;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<AuthenticationFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -50,13 +59,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Forbidden;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<AuthorizationFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -66,13 +79,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.NotFound;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<ResourceNotFoundCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -82,13 +99,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.RequestTimeout;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<RequestTimeoutCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -98,13 +119,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.PreconditionFailed;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<PreconditionFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -114,13 +139,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.RequestEntityTooLarge;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<PayloadTooLargeCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -130,13 +159,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.Locked;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<ResourceLockedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -146,13 +179,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.FailedDependency;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<DependencyFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -162,13 +199,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.TooManyRequests;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<TooManyRequestsCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
         [Fact]
@@ -178,15 +219,19 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.InternalServerError;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<InternalServerCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
-        
+
         [Fact]
         public void ShouldThrowServiceUnavailableCosmosException()
         {
@@ -194,13 +239,17 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
             HttpStatusCode cosmosStatusCode = HttpStatusCode.ServiceUnavailable;
             CosmosException cosmosException = CreateCosmosException(cosmosStatusCode);
 
+            var dbUpdateException = new DbUpdateException(
+               message: cosmosException.Message,
+               innerException: cosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
             // when . then
             Assert.Throws<ServiceUnavailableCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(cosmosException));
+                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
     }
 }
