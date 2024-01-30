@@ -21,10 +21,10 @@ namespace STX.EFxceptions.Identity.Cosmos
        where TRole : IdentityRole<TKey>
        where TKey : IEquatable<TKey>
     {
-        protected EFxceptionsIdentityContext()
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         { }
 
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        protected EFxceptionsIdentityContext() : base()
         { }
 
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
@@ -50,6 +50,12 @@ namespace STX.EFxceptions.Identity.Cosmos
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        { }
+
+        protected EFxceptionsIdentityContext() : base()
+        { }
+        
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
