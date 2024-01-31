@@ -55,7 +55,7 @@ namespace STX.EFxceptions.Identity.Cosmos
 
         protected EFxceptionsIdentityContext() : base()
         { }
-
+        
         protected override IDbErrorBroker<CosmosException> CreateErrorBroker() =>
             new CosmosErrorBroker();
 
