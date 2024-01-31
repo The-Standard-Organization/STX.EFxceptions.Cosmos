@@ -2,11 +2,7 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.EntityFrameworkCore;
-using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
-using STX.EFxceptions.Cosmos.Tests.Acceptance.Models;
-using Xunit;
 
 namespace STX.EFxceptions.Cosmos.Tests.Acceptance
 {
