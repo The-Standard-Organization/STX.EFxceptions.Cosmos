@@ -17,7 +17,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             // given
             var client = new Client
             {
-                Id = new Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
+                Id = Guid.NewGuid()
             };
 
             // when
@@ -35,7 +35,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             // given
             var client = new Client
             {
-                Id = new Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
+                Id = Guid.NewGuid()
             };
 
             // when . then
