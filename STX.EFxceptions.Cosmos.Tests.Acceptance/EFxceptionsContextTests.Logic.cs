@@ -17,7 +17,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             // given
             var client = new Client
             {
-                Id = new System.Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
+                Id = Guid.NewGuid()
             };
 
             // when
@@ -35,18 +35,18 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             // given
             var client = new Client
             {
-                Id = new System.Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
+                Id = Guid.NewGuid()
             };
 
             // when
-            context.Add(client);
+            context.Clients.Add(client);
             context.SaveChanges();
 
             Assert.Throws<DuplicateKeyCosmosException>(() =>
             {
                 try
                 {
-                    context.Add(client);
+                    context.Clients.Add(client);
                     context.SaveChanges();
                 }
                 catch (ArgumentException ex)
@@ -57,7 +57,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
             });
 
             // then
-            context.Remove(client);
+            context.Clients.Remove(client);
             context.SaveChanges();
         }
     }
