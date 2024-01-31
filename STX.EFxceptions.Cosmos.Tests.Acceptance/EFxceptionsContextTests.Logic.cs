@@ -15,7 +15,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
         public void ShouldSaveChangesSuccessfully()
         {
             // given
-            Client client = new Client
+            var client = new Client
             {
                 Id = new System.Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
             };
@@ -33,7 +33,7 @@ namespace STX.EFxceptions.Cosmos.Tests.Acceptance
         public void ShouldThrowDuplicateKeyExceptionOnSaveChanges()
         {
             // given
-            Client client = new Client
+            var client = new Client
             {
                 Id = new System.Guid("e02a866b-1266-4033-93a2-ea94ac457ee8"),
             };
