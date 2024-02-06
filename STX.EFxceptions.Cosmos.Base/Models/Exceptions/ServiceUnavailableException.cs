@@ -3,15 +3,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class DependencyFailedCosmosException : Exception
+    public class ServiceUnavailableException : Exception
     {
-        public DependencyFailedCosmosException(string message) : base(message) { }
+        public ServiceUnavailableException(string message) : base(message) { }
     }
 }

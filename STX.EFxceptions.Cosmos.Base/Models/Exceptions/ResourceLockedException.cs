@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class RequestTimeoutCosmosException : Exception
+    public class ResourceLockedException : Exception
     {
-        public RequestTimeoutCosmosException(string message) : base(message) { }
+        public ResourceLockedException(string message) : base(message) { }
     }
 }

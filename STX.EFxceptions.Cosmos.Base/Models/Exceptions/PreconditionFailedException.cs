@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class ServiceUnavailableCosmosException : Exception
+    public class PreconditionFailedException : Exception
     {
-        public ServiceUnavailableCosmosException(string message) : base(message) { }
+        public PreconditionFailedException(string message) : base(message) { }
     }
 }

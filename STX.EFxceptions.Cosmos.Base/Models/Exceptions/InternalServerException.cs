@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class ResourceLockedCosmosException : Exception
+    public class InternalServerException : Exception
     {
-        public ResourceLockedCosmosException(string message) : base(message) { }
+        public InternalServerException(string message) : base(message) { }
     }
 }

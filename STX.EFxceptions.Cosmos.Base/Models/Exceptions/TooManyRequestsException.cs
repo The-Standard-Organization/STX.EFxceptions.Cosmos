@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class DuplicateKeyCosmosException : Exception
+    public class TooManyRequestsException : Exception
     {
-        public DuplicateKeyCosmosException(string message) : base(message) { }
+        public TooManyRequestsException(string message) : base(message) { }
     }
 }

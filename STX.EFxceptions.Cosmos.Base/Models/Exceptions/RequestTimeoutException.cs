@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class PreconditionFailedCosmosException : Exception
+    public class RequestTimeoutException : Exception
     {
-        public PreconditionFailedCosmosException(string message) : base(message) { }
+        public RequestTimeoutException(string message) : base(message) { }
     }
 }

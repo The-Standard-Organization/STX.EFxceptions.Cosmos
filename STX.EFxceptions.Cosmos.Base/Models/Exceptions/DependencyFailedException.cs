@@ -3,11 +3,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class PayloadTooLargeCosmosException : Exception
+    public class DependencyFailedException : Exception
     {
-        public PayloadTooLargeCosmosException(string message) : base(message) { }
+        public DependencyFailedException(string message) : base(message) { }
     }
 }

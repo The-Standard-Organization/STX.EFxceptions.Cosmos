@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class AuthenticationFailedCosmosException : Exception
+    public class PayloadTooLargeException : Exception
     {
-        public AuthenticationFailedCosmosException(string message) : base(message) { }
+        public PayloadTooLargeException(string message) : base(message) { }
     }
 }

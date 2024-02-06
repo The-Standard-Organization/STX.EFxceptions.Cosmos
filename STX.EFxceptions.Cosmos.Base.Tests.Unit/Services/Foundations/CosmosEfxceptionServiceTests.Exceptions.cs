@@ -48,7 +48,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyCosmosException>(() =>
+            Assert.Throws<DuplicateKeyException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -68,7 +68,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<AuthenticationFailedCosmosException>(() =>
+            Assert.Throws<AuthenticationFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -88,7 +88,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<AuthorizationFailedCosmosException>(() =>
+            Assert.Throws<AuthorizationFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -108,7 +108,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<ResourceNotFoundCosmosException>(() =>
+            Assert.Throws<ResourceNotFoundException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -128,7 +128,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<RequestTimeoutCosmosException>(() =>
+            Assert.Throws<RequestTimeoutException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -148,7 +148,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<PreconditionFailedCosmosException>(() =>
+            Assert.Throws<PreconditionFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -168,7 +168,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<PayloadTooLargeCosmosException>(() =>
+            Assert.Throws<PayloadTooLargeException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -188,7 +188,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<ResourceLockedCosmosException>(() =>
+            Assert.Throws<ResourceLockedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -208,7 +208,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<DependencyFailedCosmosException>(() =>
+            Assert.Throws<DependencyFailedException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -228,7 +228,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<TooManyRequestsCosmosException>(() =>
+            Assert.Throws<TooManyRequestsException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -248,7 +248,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<InternalServerCosmosException>(() =>
+            Assert.Throws<InternalServerException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -268,7 +268,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<ServiceUnavailableCosmosException>(() =>
+            Assert.Throws<ServiceUnavailableException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
     }

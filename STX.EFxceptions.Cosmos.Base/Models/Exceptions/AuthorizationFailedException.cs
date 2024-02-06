@@ -6,8 +6,8 @@ using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class InternalServerCosmosException : Exception
+    public class AuthorizationFailedException : Exception
     {
-        public InternalServerCosmosException(string message) : base(message) { }
+        public AuthorizationFailedException(string message) : base(message) { }
     }
 }

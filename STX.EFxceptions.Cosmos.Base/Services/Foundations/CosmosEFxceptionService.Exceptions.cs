@@ -13,29 +13,29 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
             switch (cosmosErrorCode)
             {
                 case 401:
-                    throw new AuthenticationFailedCosmosException(message);
+                    throw new AuthenticationFailedException(message);
                 case 403:
-                    throw new AuthorizationFailedCosmosException(message);
+                    throw new AuthorizationFailedException(message);
                 case 404:
-                    throw new ResourceNotFoundCosmosException(message);
+                    throw new ResourceNotFoundException(message);
                 case 408:
-                    throw new RequestTimeoutCosmosException(message);
+                    throw new RequestTimeoutException(message);
                 case 409:
-                    throw new DuplicateKeyCosmosException(message);
+                    throw new DuplicateKeyException(message);
                 case 412:
-                    throw new PreconditionFailedCosmosException(message);
+                    throw new PreconditionFailedException(message);
                 case 413:
-                    throw new PayloadTooLargeCosmosException(message);
+                    throw new PayloadTooLargeException(message);
                 case 423:
-                    throw new ResourceLockedCosmosException(message);
+                    throw new ResourceLockedException(message);
                 case 424:
-                    throw new DependencyFailedCosmosException(message);
+                    throw new DependencyFailedException(message);
                 case 429:
-                    throw new TooManyRequestsCosmosException(message);
+                    throw new TooManyRequestsException(message);
                 case 500:
-                    throw new InternalServerCosmosException(message);
+                    throw new InternalServerException(message);
                 case 503:
-                    throw new ServiceUnavailableCosmosException(message);
+                    throw new ServiceUnavailableException(message);
             }
         }
     }
