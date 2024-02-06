@@ -25,6 +25,11 @@ You can get STX.EFxceptions.Cosmos [Nuget](https://www.nuget.org/packages/STX.EF
 Install-Package STX.EFxceptions.Cosmos
 ```
 
+You can get STX.EFxceptions.Identity.Cosmos [Nuget](https://www.nuget.org/packages/STX.EFxceptions.Identity.Cosmos) package by typing:
+```powershell
+Install-Package STX.EFxceptions.Identity.Cosmos
+```
+
 ## Integration
 Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or your `IdentityDbContext` with `EFxceptionIdentityContext`) as follows:
 
