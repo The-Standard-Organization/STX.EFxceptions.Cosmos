@@ -67,7 +67,7 @@ Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or yo
 |413|Payload Too Large: Document exceeds size limit.|PayloadTooLargeException|
 |423|Locked: Resource currently unavailable.|ResourceLockedException|
 |424|Dependency Failed: Dependency unable to meet requirements.|DependencyFailedException|
-|429|Too Many Requests: Rate limit exceeded.|TooManyRequestsCosmosException|
+|429|Too Many Requests: Rate limit exceeded.|TooManyRequestsException|
 |500|Internal Server Error: Server encountered an unexpected condition.|InternalServerException|
 |503|Service Unavailable: Server temporarily unable to handle request.|ServiceUnavailableException|
 
