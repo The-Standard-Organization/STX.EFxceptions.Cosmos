@@ -58,18 +58,18 @@ Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or yo
 
 |Code|Meanings|Exception|
 |--- |--- |--- |
-|401|Unauthorized: Access denied.|AuthenticationFailedCosmosException|
-|403|Forbidden: No permission to access.|	AuthorizationFailedCosmosException|
-|404|Not Found: Resource does not exist.|ResourceNotFoundCosmosException|
-|408|Request Timeout: Timed out waiting for response.|RequestTimeoutCosmosException|
-|409|Conflict: Document with same key already exists.|DuplicateKeyCosmosException|
-|412|Precondition Failed: Expected document condition not met.|PreconditionFailedCosmosException|
-|413|Payload Too Large: Document exceeds size limit.|PayloadTooLargeCosmosException|
-|423|Locked: Resource currently unavailable.|ResourceLockedCosmosException|
-|424|Dependency Failed: Dependency unable to meet requirements.|DependencyFailedCosmosException|
+|401|Unauthorized: Access denied.|AuthenticationFailedException|
+|403|Forbidden: No permission to access.|	AuthorizationFailedException|
+|404|Not Found: Resource does not exist.|ResourceNotFoundException|
+|408|Request Timeout: Timed out waiting for response.|RequestTimeoutException|
+|409|Conflict: Document with same key already exists.|DuplicateKeyException|
+|412|Precondition Failed: Expected document condition not met.|PreconditionFailedException|
+|413|Payload Too Large: Document exceeds size limit.|PayloadTooLargeException|
+|423|Locked: Resource currently unavailable.|ResourceLockedException|
+|424|Dependency Failed: Dependency unable to meet requirements.|DependencyFailedException|
 |429|Too Many Requests: Rate limit exceeded.|TooManyRequestsCosmosException|
-|500|Internal Server Error: Server encountered an unexpected condition.|InternalServerCosmosException|
-|503|Service Unavailable: Server temporarily unable to handle request.|ServiceUnavailableCosmosException|
+|500|Internal Server Error: Server encountered an unexpected condition.|InternalServerException|
+|503|Service Unavailable: Server temporarily unable to handle request.|ServiceUnavailableException|
 
 <br >
 
