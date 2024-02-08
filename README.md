@@ -19,6 +19,62 @@ This library was built according to The Standard. The library follows engineerin
 
 This library is also a community effort which involved many nights of pair-programming, test-driven development and in-depth exploration research and design discussions.
 
+## Installation 
+You can get STX.EFxceptions.Cosmos [Nuget](https://www.nuget.org/packages/STX.EFxceptions.Cosmos) package by typing:
+```powershell
+Install-Package STX.EFxceptions.Cosmos
+```
+
+You can get STX.EFxceptions.Identity.Cosmos [Nuget](https://www.nuget.org/packages/STX.EFxceptions.Identity.Cosmos) package by typing:
+```powershell
+Install-Package STX.EFxceptions.Identity.Cosmos
+```
+
+## Integration
+Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or your `IdentityDbContext` with `EFxceptionIdentityContext`) as follows:
+
+#### Before:
+ 
+```csharp
+    public partial class StorageBroker : DbContext, IStorageBroker
+    {
+        public StorageBroker(DbContextOptions<StorageBroker> options)
+            : base(options) => this.Database.Migrate();
+    }
+
+```
+
+#### After:
+```csharp
+    public partial class StorageBroker : EFxceptionsContext, IStorageBroker
+    {
+        public StorageBroker(DbContextOptions<StorageBroker> options)
+            : base(options) => this.Database.Migrate();
+    }
+
+```
+
+## Supported HTTP Status Codes
+
+|Code|Meanings|Exception|
+|--- |--- |--- |
+|401|Unauthorized: Access denied.|AuthenticationFailedException|
+|403|Forbidden: No permission to access.|	AuthorizationFailedException|
+|404|Not Found: Resource does not exist.|ResourceNotFoundException|
+|408|Request Timeout: Timed out waiting for response.|RequestTimeoutException|
+|409|Conflict: Document with same key already exists.|DuplicateKeyException|
+|412|Precondition Failed: Expected document condition not met.|PreconditionFailedException|
+|413|Payload Too Large: Document exceeds size limit.|PayloadTooLargeException|
+|423|Locked: Resource currently unavailable.|ResourceLockedException|
+|424|Dependency Failed: Dependency unable to meet requirements.|DependencyFailedException|
+|429|Too Many Requests: Rate limit exceeded.|TooManyRequestsException|
+|500|Internal Server Error: Server encountered an unexpected condition.|InternalServerException|
+|503|Service Unavailable: Server temporarily unable to handle request.|ServiceUnavailableException|
+
+<br >
+
+This library is forever growing as we add more exceptions and codes into it, we appreciate any contributions as there are so many codes we need to cover, so please stay tuned.
+
 ## Standard-Promise
 The most important fulfillment aspect in a Standard complaint system is aimed towards contributing to people, its evolution, and principles.
 An organization that systematically honors an environment of learning, training, and sharing knowledge is an organization that learns from the past, makes calculated risks for the future, 
