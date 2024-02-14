@@ -14,7 +14,7 @@ namespace STX.EFxceptions.Cosmos
 {
     public class EFxceptionsContext : DbContextBase<CosmosException>
     {
-        public EFxceptionsContext(DbContextOptions<EFxceptionsContext> options)
+        public EFxceptionsContext(DbContextOptions options)
             : base(options)
         { }
 
