@@ -14,7 +14,7 @@ using STX.EFxceptions.Interfaces.Services.EFxceptions;
 
 namespace STX.EFxceptions.Identity.Cosmos
 {
-    public class EFxceptionsIdentityContext<TUser, TRole, TKey>
+    public abstract class EFxceptionsIdentityContext<TUser, TRole, TKey>
         : IdentityDbContextBase<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>,
             IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>, CosmosException>
        where TUser : IdentityUser<TKey>
@@ -37,7 +37,7 @@ namespace STX.EFxceptions.Identity.Cosmos
         }
     }
 
-    public class EFxceptionsIdentityContext<
+    public abstract class EFxceptionsIdentityContext<
         TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
         : IdentityDbContextBase<TUser, TRole, TKey,
             TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, CosmosException>
