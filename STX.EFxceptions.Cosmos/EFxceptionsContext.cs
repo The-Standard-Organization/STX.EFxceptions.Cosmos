@@ -12,7 +12,7 @@ using STX.EFxceptions.Interfaces.Services.EFxceptions;
 
 namespace STX.EFxceptions.Cosmos
 {
-    public class EFxceptionsContext : DbContextBase<CosmosException>
+    public abstract class EFxceptionsContext : DbContextBase<CosmosException>
     {
         public EFxceptionsContext(DbContextOptions options)
             : base(options)
