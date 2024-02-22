@@ -2,12 +2,15 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class AuthorizationFailedCosmosException : DbUpdateException
+    public class AuthorizationFailedCosmosException : Exception
     {
         public AuthorizationFailedCosmosException(string message) : base(message) { }
+
+        public AuthorizationFailedCosmosException(string message, Exception innerException)
+            : base(message, innerException) { }
     }
 }
