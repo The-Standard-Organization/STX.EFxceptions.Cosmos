@@ -3,10 +3,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace STX.EFxceptions.Cosmos.Base.Models.Exceptions
 {
-    public class AuthorizationFailedCosmosException : Exception
+    public class AuthorizationFailedCosmosException : DbUpdateException
     {
         public AuthorizationFailedCosmosException(string message) : base(message) { }
 
