@@ -46,7 +46,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.37.1" />
-	  <PackageReference Include="STX.EFxceptions.Core" Version="0.1.2" />
+	  <PackageReference Include="STX.EFxceptions.Core" Version="0.1.6" />
 	</ItemGroup>
 
 	<ItemGroup>
