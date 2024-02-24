@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Core;
 using STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker;
 using STX.EFxceptions.Cosmos.Base.Services.Foundations;
-using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
-using STX.EFxceptions.Interfaces.Services.EFxceptions;
+using STX.EFxceptions.Abstractions.Brokers.DbErrorBroker;
+using STX.EFxceptions.Abstractions.Services.EFxceptions;
 
 namespace STX.EFxceptions.Cosmos
 {

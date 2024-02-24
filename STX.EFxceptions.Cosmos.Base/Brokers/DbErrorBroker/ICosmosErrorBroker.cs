@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Cosmos;
-using STX.EFxceptions.Interfaces.Brokers.DbErrorBroker;
+using STX.EFxceptions.Abstractions.Brokers.DbErrorBroker;
 
 namespace STX.EFxceptions.Cosmos.Base.Brokers.DbErrorBroker
 {
