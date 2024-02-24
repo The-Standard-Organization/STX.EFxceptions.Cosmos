@@ -5,6 +5,7 @@
 using System.Net;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
+using STX.EFxceptions.Abstractions.Models.Exceptions;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
 using Xunit;
 
@@ -48,7 +49,7 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                     .Returns((int)cosmosStatusCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyCosmosException>(() =>
+            Assert.Throws<DuplicateKeyException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
