@@ -2,12 +2,34 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
+using Microsoft.EntityFrameworkCore;
+using STX.EFxceptions.Abstractions.Models.Exceptions;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
 
 namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
 {
     public partial class CosmosEFxceptionService
     {
+        public delegate void ReturningExceptionFunction();
+
+        public void TryCatch(ReturningExceptionFunction returningExceptionFunction)
+        {
+            try
+            {
+                returningExceptionFunction();
+            }
+            catch (DuplicateKeyCosmosException duplicateKeyCosmosException)
+            {
+                throw new DuplicateKeyException(
+                    message: duplicateKeyCosmosException.Message,
+                    innerException: duplicateKeyCosmosException);
+            }
+            catch (DbUpdateException)
+            {
+                throw;
+            }
+        }
+
         private void ConvertAndThrowMeaningfulException(int cosmosErrorCode, string message)
         {
             switch (cosmosErrorCode)

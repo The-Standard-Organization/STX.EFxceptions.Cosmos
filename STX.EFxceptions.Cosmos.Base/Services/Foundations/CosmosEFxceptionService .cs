@@ -16,14 +16,15 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
         public CosmosEFxceptionService(IDbErrorBroker<CosmosException> cosmosErrorBroker) =>
             this.cosmosErrorBroker = cosmosErrorBroker;
 
-        public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
+        public void ThrowMeaningfulException(DbUpdateException dbUpdateException) =>
+        TryCatch(() =>
         {
             ValidateInnerException(dbUpdateException);
             CosmosException cosmosException = GetCosmosException(dbUpdateException.InnerException);
             int cosmosErrorCode = this.cosmosErrorBroker.GetErrorCode(cosmosException);
             ConvertAndThrowMeaningfulException(cosmosErrorCode, cosmosException.Message);
             throw dbUpdateException;
-        }
+        });
 
         private CosmosException GetCosmosException(Exception exception) => (CosmosException)exception;
     }
