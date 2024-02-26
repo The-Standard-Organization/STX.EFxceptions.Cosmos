@@ -2,6 +2,7 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
+using Microsoft.EntityFrameworkCore;
 using STX.EFxceptions.Abstractions.Models.Exceptions;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
 
@@ -17,53 +18,15 @@ namespace STX.EFxceptions.Cosmos.Base.Services.Foundations
             {
                 returningExceptionFunction();
             }
-            catch (AuthenticationFailedCosmosException authenticationFailedCosmosException)
-            {
-                throw new AuthenticationFailedCosmosException(authenticationFailedCosmosException.Message);
-            }
-            catch (AuthorizationFailedCosmosException authorizationFailedCosmosException)
-            {
-                throw new AuthorizationFailedCosmosException(authorizationFailedCosmosException.Message);
-            }
-            catch (ResourceNotFoundCosmosException resourceNotFoundCosmosException)
-            {
-                throw new ResourceNotFoundCosmosException(resourceNotFoundCosmosException.Message);
-            }
-            catch (RequestTimeoutCosmosException requestTimeoutCosmosException)
-            {
-                throw new RequestTimeoutCosmosException(requestTimeoutCosmosException.Message);
-            }
             catch (DuplicateKeyCosmosException duplicateKeyCosmosException)
             {
-                throw new DuplicateKeyException(duplicateKeyCosmosException.Message, duplicateKeyCosmosException);
+                throw new DuplicateKeyException(
+                    message: duplicateKeyCosmosException.Message,
+                    innerException: duplicateKeyCosmosException);
             }
-            catch (PreconditionFailedCosmosException preconditionFailedCosmosException)
+            catch (DbUpdateException)
             {
-                throw new PreconditionFailedCosmosException(preconditionFailedCosmosException.Message);
-            }
-            catch (PayloadTooLargeCosmosException payloadTooLargeCosmosException)
-            {
-                throw new PayloadTooLargeCosmosException(payloadTooLargeCosmosException.Message);
-            }
-            catch (ResourceLockedCosmosException resourceLockedCosmosException)
-            {
-                throw new ResourceLockedCosmosException(resourceLockedCosmosException.Message);
-            }
-            catch (DependencyFailedCosmosException dependencyFailedCosmosException)
-            {
-                throw new DependencyFailedCosmosException(dependencyFailedCosmosException.Message);
-            }
-            catch (TooManyRequestsCosmosException tooManyRequestsCosmosException)
-            {
-                throw new TooManyRequestsCosmosException(tooManyRequestsCosmosException.Message);
-            }
-            catch (InternalServerCosmosException internalServerCosmosException)
-            {
-                throw new InternalServerCosmosException(internalServerCosmosException.Message);
-            }
-            catch (ServiceUnavailableCosmosException serviceUnavailableCosmosException)
-            {
-                throw new ServiceUnavailableCosmosException(serviceUnavailableCosmosException.Message);
+                throw;
             }
         }
 
