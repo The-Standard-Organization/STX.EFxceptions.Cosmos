@@ -2,11 +2,13 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
-using System.Net;
+using FluentAssertions;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using STX.EFxceptions.Abstractions.Models.Exceptions;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
+using System.Net;
 using Xunit;
 
 namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
@@ -44,13 +46,39 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            DuplicateKeyCosmosException duplicateKeyCosmosException =
+                new DuplicateKeyCosmosException(cosmosException.Message);
+
+            DuplicateKeyException expectedDuplicateKeyException =
+                new DuplicateKeyException(
+                    message: duplicateKeyCosmosException.Message,
+                    innerException: duplicateKeyCosmosException);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<DuplicateKeyException>(() =>
+            // when 
+            DuplicateKeyException actualDuplicateKeyException =
+                    Assert.Throws<DuplicateKeyException>(() =>
                 this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualDuplicateKeyException.Should()
+                .BeEquivalentTo(
+                    expectation: expectedDuplicateKeyException,
+                    config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
