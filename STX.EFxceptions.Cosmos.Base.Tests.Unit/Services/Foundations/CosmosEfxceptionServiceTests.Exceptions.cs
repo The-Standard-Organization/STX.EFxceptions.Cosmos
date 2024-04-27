@@ -26,13 +26,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                 message: cosmosException.Message,
                 innerException: cosmosException);
 
+            DbUpdateException expectedDbUpdateException = dbUpdateException;
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<DbUpdateException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            DbUpdateException actualDbUpdateException =
+                Assert.Throws<DbUpdateException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualDbUpdateException.Should()
+                .BeEquivalentTo(
+                expectation: expectedDbUpdateException,
+                    config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
+
         }
 
         [Fact]
@@ -46,10 +68,10 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
-            DuplicateKeyCosmosException duplicateKeyCosmosException =
+            var duplicateKeyCosmosException =
                 new DuplicateKeyCosmosException(cosmosException.Message);
 
-            DuplicateKeyException expectedDuplicateKeyException =
+            var expectedDuplicateKeyException =
                 new DuplicateKeyException(
                     message: duplicateKeyCosmosException.Message,
                     innerException: duplicateKeyCosmosException);
@@ -60,8 +82,9 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
 
             // when 
             DuplicateKeyException actualDuplicateKeyException =
-                    Assert.Throws<DuplicateKeyException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+                Assert.Throws<DuplicateKeyException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
 
             // then
             actualDuplicateKeyException.Should()
@@ -92,13 +115,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedAuthenticationFailedCosmosException =
+                new AuthenticationFailedCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<AuthenticationFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when
+            AuthenticationFailedCosmosException actualAuthenticationFailedCosmosException =
+                Assert.Throws<AuthenticationFailedCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualAuthenticationFailedCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedAuthenticationFailedCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -112,13 +157,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedAuthorizationFailedCosmosException =
+                new AuthorizationFailedCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<AuthorizationFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            AuthorizationFailedCosmosException actualAuthorizationFailedCosmosException =
+                Assert.Throws<AuthorizationFailedCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualAuthorizationFailedCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedAuthorizationFailedCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -132,14 +199,37 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedResourceNotFoundCosmosException =
+                new ResourceNotFoundCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<ResourceNotFoundCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            ResourceNotFoundCosmosException actualResourceNotFoundCosmosException =
+                Assert.Throws<ResourceNotFoundCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualResourceNotFoundCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedResourceNotFoundCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
+
 
         [Fact]
         public void ShouldThrowRequestTimeoutCosmosException()
@@ -152,13 +242,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedRequestTimeoutCosmosException =
+                new RequestTimeoutCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<RequestTimeoutCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when
+            RequestTimeoutCosmosException actualRequestTimeoutCosmosException =
+                Assert.Throws<RequestTimeoutCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualRequestTimeoutCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedRequestTimeoutCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -172,13 +284,34 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedPreconditionFailedCosmosException =
+                new PreconditionFailedCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<PreconditionFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            PreconditionFailedCosmosException actualPreconditionFailedCosmosException =
+                Assert.Throws<PreconditionFailedCosmosException>(() =>
+                    this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualPreconditionFailedCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedPreconditionFailedCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -192,13 +325,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedPayloadTooLargeCosmosException =
+                new PayloadTooLargeCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<PayloadTooLargeCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when
+            PayloadTooLargeCosmosException actualPayloadTooLargeCosmosException =
+                Assert.Throws<PayloadTooLargeCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualPayloadTooLargeCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedPayloadTooLargeCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -212,13 +367,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedResourceLockedCosmosException =
+                new ResourceLockedCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<ResourceLockedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            ResourceLockedCosmosException actualResourceLockedCosmosException =
+                Assert.Throws<ResourceLockedCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualResourceLockedCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedResourceLockedCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -232,13 +409,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedDependencyFailedCosmosException =
+                new DependencyFailedCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<DependencyFailedCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when
+            DependencyFailedCosmosException actualDependencyFailedCosmosException =
+                Assert.Throws<DependencyFailedCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualDependencyFailedCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedDependencyFailedCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -252,13 +451,36 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedTooManyRequestsCosmosException =
+               new TooManyRequestsCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<TooManyRequestsCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            TooManyRequestsCosmosException actualTooManyRequestsCosmosException =
+                Assert.Throws<TooManyRequestsCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualTooManyRequestsCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedTooManyRequestsCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
+
         }
 
         [Fact]
@@ -272,13 +494,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedInternalServerCosmosException =
+                new InternalServerCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<InternalServerCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            InternalServerCosmosException actualInternalServerCosmosException =
+                Assert.Throws<InternalServerCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualInternalServerCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedInternalServerCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
 
         [Fact]
@@ -292,13 +536,35 @@ namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
                message: cosmosException.Message,
                innerException: cosmosException);
 
+            var expectedServiceUnavailableCosmosException =
+                new ServiceUnavailableCosmosException(cosmosException.Message);
+
             this.cosmosErrorBrokerMock.Setup(broker =>
                 broker.GetErrorCode(cosmosException))
                     .Returns((int)cosmosStatusCode);
 
-            // when . then
-            Assert.Throws<ServiceUnavailableCosmosException>(() =>
-                this.cosmosEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+            // when 
+            ServiceUnavailableCosmosException actualServiceUnavailableCosmosException =
+                Assert.Throws<ServiceUnavailableCosmosException>(() =>
+                    this.cosmosEFxceptionService
+                        .ThrowMeaningfulException(dbUpdateException));
+
+            // then
+            actualServiceUnavailableCosmosException.Should()
+                .BeEquivalentTo(
+                expectation: expectedServiceUnavailableCosmosException,
+                config: options => options
+                        .Excluding(ex => ex.TargetSite)
+                        .Excluding(ex => ex.StackTrace)
+                        .Excluding(ex => ex.Source)
+                        .Excluding(ex => ex.InnerException.TargetSite)
+                        .Excluding(ex => ex.InnerException.StackTrace)
+                        .Excluding(ex => ex.InnerException.Source));
+
+            this.cosmosErrorBrokerMock.Verify(broker =>
+                broker.GetErrorCode(cosmosException), Times.Once);
+
+            this.cosmosErrorBrokerMock.VerifyNoOtherCalls();
         }
     }
 }
