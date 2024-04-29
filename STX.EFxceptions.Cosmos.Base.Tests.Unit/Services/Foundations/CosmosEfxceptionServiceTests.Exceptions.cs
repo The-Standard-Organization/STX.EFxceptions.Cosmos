@@ -2,13 +2,13 @@
 // Copyright(c) The Standard Organization: A coalition of the Good-Hearted Engineers
 // ----------------------------------------------------------------------------------
 
+using System.Net;
 using FluentAssertions;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using STX.EFxceptions.Abstractions.Models.Exceptions;
 using STX.EFxceptions.Cosmos.Base.Models.Exceptions;
-using System.Net;
 using Xunit;
 
 namespace STX.EFxceptions.Cosmos.Base.Tests.Unit.Services.Foundations
